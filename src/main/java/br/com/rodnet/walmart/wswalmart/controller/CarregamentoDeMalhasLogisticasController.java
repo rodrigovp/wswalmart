@@ -4,5 +4,7 @@ public class CarregamentoDeMalhasLogisticasController {
 	
 	public void carregarMalhaLogistica(){
 		
+		
+		
 	}
 }
