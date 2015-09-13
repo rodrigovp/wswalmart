@@ -92,14 +92,15 @@ public class Mapa {
 	}
 
 	public void adicionarTrecho(String nomeOrigem, String nomeDestino, Integer distancia) {
+		ligarTrechosEntreSi(nomeOrigem, nomeDestino, distancia);
+		ligarTrechosEntreSi(nomeDestino, nomeOrigem, distancia);
+	}
+	
+	private void ligarTrechosEntreSi(String nomeOrigem, String nomeDestino, Integer distancia){
 		if(!trechos.containsKey(nomeOrigem)){
 			trechos.put(nomeOrigem, new ArrayList<Trecho>());
 		}
 		trechos.get(nomeOrigem).add(new Trecho(nomeDestino, distancia));
-		if(!trechos.containsKey(nomeDestino)){
-			trechos.put(nomeDestino, new ArrayList<Trecho>());
-		}
-		trechos.get(nomeDestino).add(new Trecho(nomeOrigem, distancia));
 	}
 
 	public String lerNome() {
