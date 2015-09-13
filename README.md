@@ -19,8 +19,8 @@ mvn clean package -DskipTests
 java -jar target/wswalmart-1.0.0.jar
 
 Caso queira rodar a aplicação num servidor, basta incluir as linhas abaixo no pom.xml:
-	<packaging>war</packaging>
 
+	<packaging>war</packaging>
 	<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -31,7 +31,7 @@ Caso queira rodar a aplicação num servidor, basta incluir as linhas abaixo no 
             <scope>provided</scope>
         </dependency>
 
-Para carregar as malhas, basta escrever um arquivo no formato pedido no requisito e realizar um post para o sistema para o endereço http://localhost:8080/carregarMalhaLogistica O nome do arquivo será o nome do mapa.
+Para carregar as malhas, basta escrever um arquivo no formato pedido no requisito e realizar um post para o sistema para o endereço http://localhost:8080/carregarMalhaLogistica O nome do arquivo será o nome do mapa. As classes de teste realizam este procedimento nos mais diferentes cenários. 
 
 Para realizar as consultas, deve-se utilizar uma URL semelhante a abaixo:
 http://localhost:8080/buscarRotaOtimizada/mapa/mapaComum/origem/A/destino/B/autonomia/5/combustivel/3.09
