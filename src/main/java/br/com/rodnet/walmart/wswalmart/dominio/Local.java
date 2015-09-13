@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Vertice implements Comparable<Vertice>, Iterable<Aresta>{
+public class Local implements Comparable<Local>, Iterable<Trecho>{
 
 	private String descricao;
 	private int distancia;
 	private boolean visitado = false;
-	private Vertice pai;
-	private final List<Aresta> arestas = new ArrayList<Aresta>();
-	private final List<Vertice> vizinhos = new ArrayList<Vertice>();
+	private Local pai;
+	private final List<Trecho> arestas = new ArrayList<Trecho>();
+	private final List<Local> vizinhos = new ArrayList<Local>();
 
 	public void setDescricao(String nome){
 
@@ -48,40 +48,40 @@ public class Vertice implements Comparable<Vertice>, Iterable<Aresta>{
 		return this.distancia;
 	}
 
-	public void setPai(Vertice pai){
+	public void setPai(Local pai){
 
 		this.pai = pai;
 	}
 
-	public Vertice getPai(){
+	public Local getPai(){
 
 		return this.pai;
 	}
 
-	public void setVizinhos(List<Vertice> vizinhos) {
+	public void setVizinhos(List<Local> vizinhos) {
 
 		this.vizinhos.addAll(vizinhos);
 
 	}
 
-	public List<Vertice> getVizinhos(){
+	public List<Local> getVizinhos(){
 
 		return this.vizinhos;
 	}
 
-	public void setArestas(List <Aresta> arestas){
+	public void setArestas(List <Trecho> arestas){
 
 		this.arestas.addAll(arestas);
 
 	}
 
-	public List<Aresta> getArestas() {
+	public List<Trecho> getArestas() {
 
 		return arestas;
 	}
 
 	@Override
-	public int compareTo(Vertice vertice) {
+	public int compareTo(Local vertice) {
 		if(this.getDistancia() < vertice.getDistancia()) return -1;
 		else if(this.getDistancia() == vertice.getDistancia()) return 0;
 
@@ -90,8 +90,8 @@ public class Vertice implements Comparable<Vertice>, Iterable<Aresta>{
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Vertice){
-			Vertice vRef = (Vertice) obj;
+		if(obj instanceof Local){
+			Local vRef = (Local) obj;
 			if(this.getDescricao().equals(vRef.getDescricao())) return true;
 		}
 		return false;
@@ -105,7 +105,7 @@ public class Vertice implements Comparable<Vertice>, Iterable<Aresta>{
 	}
 
 	@Override
-	public Iterator<Aresta> iterator() {
+	public Iterator<Trecho> iterator() {
 		return arestas.iterator();
 	}
 }

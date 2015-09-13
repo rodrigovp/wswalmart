@@ -1,12 +1,12 @@
 package br.com.rodnet.walmart.wswalmart.dominio;
 
-public class Aresta {
+public class Trecho {
 
 	private int peso;
-	private Vertice origem;
-	private Vertice destino;
+	private Local origem;
+	private Local destino;
 
-	public Aresta(Vertice v1, Vertice v2){
+	public Trecho(Local v1, Local v2){
 		this.peso = 1;
 		this.origem = v1;
 		this.destino = v2;
@@ -21,19 +21,19 @@ public class Aresta {
 	}
 
 
-	public void setDestino(Vertice destino) {
+	public void setDestino(Local destino) {
 		this.destino = destino;
 	}
 
-	public Vertice getDestino() {
+	public Local getDestino() {
 		return destino;
 	}
 
-	public void setOrigem(Vertice origem) {
+	public void setOrigem(Local origem) {
 		this.origem = origem;
 	}
 
-	public Vertice getOrigem() {
+	public Local getOrigem() {
 		return origem;
 	}
 
