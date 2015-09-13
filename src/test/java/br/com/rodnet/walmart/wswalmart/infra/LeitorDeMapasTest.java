@@ -2,14 +2,11 @@ package br.com.rodnet.walmart.wswalmart.infra;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.empty;
 import static org.junit.Assert.assertThat;
-
-import java.util.Arrays;
 
 import org.junit.Test;
 
-import br.com.rodnet.walmart.wswalmart.dominio.Mapa2;
+import br.com.rodnet.walmart.wswalmart.dominio.Mapa;
 
 public class LeitorDeMapasTest {
 	
@@ -22,24 +19,24 @@ public class LeitorDeMapasTest {
 	
 	@Test
 	public void lerMapaSemRotas() throws FormatoInvalidoException{
-		Mapa2 mapaVazio = leitorDeMapas.lerNovoMapa("mapa vazio.txt", "");
+		Mapa mapaVazio = leitorDeMapas.lerNovoMapa("mapaVazio.txt", "");
 		
-		assertThat(mapaVazio.lerCaminhoMaisCurtoEntre("A", "B"), is(empty()));
-		assertThat(mapaVazio.lerNome(), is(equalTo("mapa vazio")));
+		assertThat(mapaVazio.lerCaminhoMaisCurtoEntre("A", "B").toString(), is("[]"));
+		assertThat(mapaVazio.lerNome(), is(equalTo("mapaVazio")));
 	}
 	
 	@Test
 	public void lerMapaComUmaRota() throws FormatoInvalidoException{
-		Mapa2 mapa = leitorDeMapas.lerNovoMapa("mapa com uma rota", "A B 10");
+		Mapa mapa = leitorDeMapas.lerNovoMapa("mapaComUmaRota", "A B 10");
 		
-		assertThat(mapa.lerCaminhoMaisCurtoEntre("A", "B"), is(equalTo(Arrays.asList("A", "B"))));
-		assertThat(mapa.lerNome(), is(equalTo("mapa com uma rota")));
+		assertThat(mapa.lerCaminhoMaisCurtoEntre("A", "B").toString(), is(equalTo("[A, B]")));
+		assertThat(mapa.lerNome(), is(equalTo("mapaComUmaRota")));
 	}
 	
 	@Test
 	public void lerMapaComTresRotas() throws FormatoInvalidoException{
-		Mapa2 mapa = leitorDeMapas.lerNovoMapa("mapa com tres rotas", "A B 5\nB C 6\nA C 3");
+		Mapa mapa = leitorDeMapas.lerNovoMapa("mapaComTresRotas", "A B 5\nB C 6\nA C 3");
 		
-		assertThat(mapa.lerCaminhoMaisCurtoEntre("A", "C"), is(equalTo(Arrays.asList("A", "C"))));
+		assertThat(mapa.lerCaminhoMaisCurtoEntre("A", "C").toString(), is(equalTo("[A, C]")));
 	}
 }

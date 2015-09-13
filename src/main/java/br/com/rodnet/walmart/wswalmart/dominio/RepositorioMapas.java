@@ -2,8 +2,8 @@ package br.com.rodnet.walmart.wswalmart.dominio;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface RepositorioMapas extends MongoRepository<Mapa2, String>{
+public interface RepositorioMapas extends MongoRepository<Mapa, String>{
 
-	Mapa2 findByNome(String nome);
+	Mapa findByNome(String nome);
 
 }

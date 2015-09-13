@@ -4,27 +4,26 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
-public class Mapa2Test {
+public class MapaTest {
 	
-	private Mapa2 mapa;
+	private Mapa mapa;
 	
 	@Before
 	public void setUp(){
-		mapa = new Mapa2("mapa de teste");
+		mapa = new Mapa("mapa de teste");
 	}
 	
 	@Test
 	public void adicionarUmTrechoEmMapaVazio(){
 		mapa.adicionarTrecho("A", "B", 10);
 	
-		List<String> obtido = mapa.lerCaminhoMaisCurtoEntre("A", "B");
+		Rota obtido = mapa.lerCaminhoMaisCurtoEntre("A", "B");
 		
 		assertThat(obtido.toString(), is(equalTo("[A, B]")));
+		assertThat(obtido.lerExtensao(), is(equalTo(10)));
 	}
 	
 	@Test
@@ -33,9 +32,10 @@ public class Mapa2Test {
 		mapa.adicionarTrecho("B", "C", 6);
 		mapa.adicionarTrecho("A", "C", 3);
 		
-		List<String> obtido = mapa.lerCaminhoMaisCurtoEntre("A", "C");
+		Rota obtido = mapa.lerCaminhoMaisCurtoEntre("A", "C");
 		
 		assertThat(obtido.toString(), is(equalTo("[A, C]")));
+		assertThat(obtido.lerExtensao(), is(equalTo(3)));
 	}
 	
 	@Test
@@ -44,9 +44,10 @@ public class Mapa2Test {
 		mapa.adicionarTrecho("B", "C", 6);
 		mapa.adicionarTrecho("A", "C", 20);
 		
-		List<String> obtido = mapa.lerCaminhoMaisCurtoEntre("A", "C");
+		Rota obtido = mapa.lerCaminhoMaisCurtoEntre("A", "C");
 		
 		assertThat(obtido.toString(), is(equalTo("[A, B, C]")));
+		assertThat(obtido.lerExtensao(), is(equalTo(11)));
 	}
 	
 	/**
@@ -60,9 +61,10 @@ public class Mapa2Test {
 		mapa.adicionarTrecho("6", "1", 14);
 		mapa.adicionarTrecho("1", "3", 9);
 		
-		List<String> obtido = mapa.lerCaminhoMaisCurtoEntre("1", "6");
+		Rota obtido = mapa.lerCaminhoMaisCurtoEntre("1", "6");
 		
 		assertThat(obtido.toString(), is(equalTo("[1, 3, 6]")));
+		assertThat(obtido.lerExtensao(), is(equalTo(11)));
 	}
 	
 	/**
@@ -80,8 +82,9 @@ public class Mapa2Test {
 		mapa.adicionarTrecho("D", "F", 6);
 		mapa.adicionarTrecho("E", "F", 2);
 		
-		List<String> obtido = mapa.lerCaminhoMaisCurtoEntre("A", "F");
+		Rota obtido = mapa.lerCaminhoMaisCurtoEntre("A", "F");
 		
 		assertThat(obtido.toString(), is(equalTo("[A, C, B, D, E, F]")));
+		assertThat(obtido.lerExtensao(), is(equalTo(12)));
 	}
 }

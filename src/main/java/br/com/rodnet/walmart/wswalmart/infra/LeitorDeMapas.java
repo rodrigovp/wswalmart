@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import br.com.rodnet.walmart.wswalmart.dominio.Mapa2;
+import br.com.rodnet.walmart.wswalmart.dominio.Mapa;
 
 @Component
 public class LeitorDeMapas {
@@ -15,9 +15,9 @@ public class LeitorDeMapas {
 	private static final String ESPACO = " ";
 	private static final String PONTO = ".";
 	
-	public Mapa2 lerNovoMapa(String nomeDoMapa, String conteudoDoArquivo) throws FormatoInvalidoException {
+	public Mapa lerNovoMapa(String nomeDoMapa, String conteudoDoArquivo) throws FormatoInvalidoException {
 		List<String> linhasDoArquivo = Arrays.asList(conteudoDoArquivo.split(PULO_DE_LINHA));
-		Mapa2 ret = new Mapa2(calcularNomeDoMapa(nomeDoMapa));
+		Mapa ret = new Mapa(calcularNomeDoMapa(nomeDoMapa));
 		
 		if(!conteudoDoArquivo.isEmpty()){
 			for(String linhaDoArquivo : linhasDoArquivo){
